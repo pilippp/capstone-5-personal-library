@@ -1,6 +1,6 @@
 # 📚 Personal Library
 
-A simple **Node.js + Express** web application that lets you search books using the **OpenLibrary API**, add them to your **personal collection stored in PostgreSQL**, and manage (add/remove) your library through a clean web interface built with **EJS** templates.
+A simple **Node.js + Express** web application that lets you search books via the **OpenLibrary API**, store them in your **PostgreSQL personal collection**, and manage your library (add/remove) through a clean web interface built with **EJS** templates.
 
 ---
 
@@ -8,23 +8,23 @@ A simple **Node.js + Express** web application that lets you search books using 
 
 **Personal Library** allows users to:
 
-- Search books by title via the [OpenLibrary API](https://openlibrary.org/developers/api).
-- Save selected books to their own PostgreSQL-based library.
-- Remove books from their personal collection.
-- Automatically store author–book relationships in a **many-to-many** database schema.
+- 🔎 Search books by title using the [OpenLibrary API](https://openlibrary.org/developers/api)
+- 💾 Save selected books to a PostgreSQL database
+- 🗑️ Remove books from their personal collection
+- 🔁 Manage **many-to-many relationships** between books and authors
 
 ---
 
 ## 🧩 Tech Stack
 
-| Layer         | Technology                         |
-| ------------- | ---------------------------------- |
-| Backend       | Node.js, Express.js                |
-| Frontend      | EJS templates, HTML, CSS           |
-| Database      | PostgreSQL                         |
-| API           | OpenLibrary (book data and covers) |
-| Environment   | dotenv                             |
-| HTTP Requests | Axios                              |
+| Layer           | Technology                       |
+| --------------- | -------------------------------- |
+| **Backend**     | Node.js, Express.js              |
+| **Frontend**    | EJS templates, HTML, CSS         |
+| **Database**    | PostgreSQL                       |
+| **API**         | OpenLibrary (book data & covers) |
+| **Environment** | dotenv                           |
+| **HTTP**        | Axios                            |
 
 ---
 
@@ -35,27 +35,25 @@ personal-library/
 ├── docs/
 │ └── personal_library_db.drawio # Database architecture diagram
 │
-├── node_modules/ # Dependencies (ignored by Git)
-│
-├── public/ # Static files (images, CSS)
+├── public/ # Static files (CSS, images)
 │
 ├── views/ # EJS templates
 │ ├── partials/ # Header/footer includes
-│ ├── index.ejs # Home page (library display)
+│ ├── index.ejs # Library display page
 │ └── search.ejs # Search results page
 │
-├── .env # Environment variables for PostgreSQL
+├── .env # PostgreSQL credentials (ignored by Git)
 ├── .gitignore
-├── index.js # Main Express server file
+├── index.js # Main Express server
 ├── package.json
-├── queries.sql # SQL schema for database creation
-└── README.md # You are here
+├── queries.sql # SQL script for DB creation
+└── README.md
 
 ---
 
 ## 🧠 Database Schema
 
-The database contains **three tables** with a many-to-many relationship between books and authors.
+The database includes **three tables**, with a **many-to-many** relationship between `books` and `authors`.
 
 ```sql
 CREATE TABLE books (
@@ -81,58 +79,66 @@ CREATE TABLE books_authors (
 
 ⚙️ Environment Variables
 
-Create a .env file at the root of the project and set your PostgreSQL credentials:
+Create a .env file at the root of your project and set your PostgreSQL credentials:
+
 PG_USER=your_username
 PG_HOST=localhost
 PG_DATABASE=personal_library
 PG_PASSWORD=your_password
 PG_PORT=5432
 
-🚀 Installation and Setup
-
-Clone the repository
+🚀 Installation & Setup
+1️⃣ Clone the repository
 git clone https://github.com/yourusername/personal-library.git
 cd personal-library
 
-Install dependencies
+2️⃣ Install dependencies
 npm install
-Set up PostgreSQL
 
-Create a new database named personal_library.
-Run the SQL script to create tables:
+3️⃣ Set up PostgreSQL
+
+Create a new database named personal_library
+
+Run the schema script:
+
 psql -U your_username -d personal_library -f queries.sql
 
-Configure environment
-Add your PostgreSQL credentials in .env as shown above.
+4️⃣ Configure environment
 
-Run the server
-node index.js:
+Add your PostgreSQL credentials to .env as shown above.
 
-Visit http://localhost:3000
+5️⃣ Run the server
+node index.js
+
+
+Then open: http://localhost:3000
 
 🔍 Features
-✅ Search books by title using OpenLibrary API
-✅ Add selected books to your PostgreSQL library
-✅ Remove books from your library
+
+✅ Search books by title using the OpenLibrary API
+✅ Add and remove books from your PostgreSQL library
 ✅ Store book–author relationships automatically
 ✅ Display book covers when available
 ✅ Clean, responsive EJS templates
 
-🧪 Example
-Homepage: displays all books saved in your personal library.
+🧪 Example Usage
 
-Search Page: lets you find and add new books.
+Homepage: displays all saved books in your personal library.
+Search page: lets you find and add new books.
 
 Example API call:
 
 GET https://openlibrary.org/search.json?title=harry+potter
 
 🛠️ Future Improvements
-Add user authentication (so multiple users can have their own library)
-Display additional book info (genres, descriptions)
 
+🔐 Add user authentication (multi-user support)
 
-🧑‍💻 Author
+🧾 Display more book details (genres, descriptions)
+
+📱 Improve responsiveness and design
+
+👨‍💻 Author
+
 pilippp
-
 ```
