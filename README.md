@@ -30,7 +30,7 @@ A simple **Node.js + Express** web application that lets you search books using 
 
 ## 🗂️ Project Structure
 
-\`\`\`
+```
 personal-library/
 │
 ├── docs/
@@ -49,7 +49,7 @@ personal-library/
 ├── package.json
 ├── queries.sql # SQL schema for database creation
 └── README.md # You are here
-\`\`\`
+```
 
 ---
 
@@ -57,7 +57,7 @@ personal-library/
 
 The database contains **three tables** with a many-to-many relationship between books and authors.
 
-\`\`\`sql
+```sql
 CREATE TABLE books (
 id SERIAL PRIMARY KEY,
 title VARCHAR(200) NOT NULL,
@@ -78,21 +78,21 @@ book_id INTEGER REFERENCES books(id) ON DELETE CASCADE,
 author_id INTEGER REFERENCES authors(id) ON DELETE CASCADE,
 PRIMARY KEY (book_id, author_id)
 );
-\`\`\`
+```
 
 ---
 
 ## ⚙️ Environment Variables
 
-Create a \`.env\` file at the root of your project and set your PostgreSQL credentials:
+Create a `.env` file at the root of your project and set your PostgreSQL credentials:
 
-\`\`\`
+```
 PG_USER=your_username
 PG_HOST=localhost
 PG_DATABASE=personal_library
 PG_PASSWORD=your_password
 PG_PORT=5432
-\`\`\`
+```
 
 ---
 
@@ -100,34 +100,34 @@ PG_PORT=5432
 
 ### 1️⃣ Clone the repository
 
-\`\`\`bash
+```bash
 git clone https://github.com/yourusername/personal-library.git
 cd personal-library
-\`\`\`
+```
 
 ### 2️⃣ Install dependencies
 
-\`\`\`bash
+```bash
 npm install
-\`\`\`
+```
 
 ### 3️⃣ Set up PostgreSQL
 
-- Create a new database named \`personal_library\`.
+- Create a new database named `personal_library`.
 - Run the SQL script to create tables:
-  \`\`\`bash
+  ```bash
   psql -U your_username -d personal_library -f queries.sql
-  \`\`\`
+  ```
 
 ### 4️⃣ Configure environment
 
-- Add your PostgreSQL credentials in the \`.env\` file as shown above.
+- Add your PostgreSQL credentials in the `.env` file as shown above.
 
 ### 5️⃣ Run the server
 
-\`\`\`bash
+```bash
 node index.js
-\`\`\`
+```
 
 Then visit 👉 [http://localhost:3000](http://localhost:3000)
 
@@ -150,9 +150,9 @@ Then visit 👉 [http://localhost:3000](http://localhost:3000)
 **Search Page:** lets you find and add new books.
 
 Example API call:
-\`\`\`
+```
 GET https://openlibrary.org/search.json?title=harry+potter
-\`\`\`
+```
 
 ---
 
